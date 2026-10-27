@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+
+  --color-night: #0e0f15;
+  --color-mist: #171922;
+  --color-fog: #20232f;
+  --color-line: #2b2f3d;
+  --color-paper: #ebe5d6;
+  --color-faded: #9a9789;
+  --color-ghost: #8ee6d0;
+  --color-ghost-dim: #4f8f80;
+  --color-blood: #e07a7a;
+}
+
+body {
+  @apply bg-night text-paper font-sans antialiased;
+  background-image: radial-gradient(ellipse at top, rgb(142 230 208 / 0.06), transparent 60%);
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  /* Use together with .btn, e.g. className="btn btn-primary" */
+  .btn-primary {
+    @apply bg-ghost text-night hover:bg-ghost/85;
+  }
+  .btn-ghost {
+    @apply border border-line text-paper hover:border-ghost-dim hover:text-ghost;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line bg-mist px-3 py-2 text-paper placeholder:text-faded/60 outline-none transition focus:border-ghost-dim focus:ring-2 focus:ring-ghost/15;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-faded;
+  }
+  .card {
+    @apply rounded-xl border border-line bg-mist;
+  }
+}
+
+/* React Flow dark tweaks */
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__controls button {
+  background: var(--color-fog);
+  border-color: var(--color-line);
+  fill: var(--color-paper);
+}
